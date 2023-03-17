@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class SistemaDePedidos extends JFrame {
+public class SistemaDePedidos extends JFrame {//popo
     public SistemaDePedidos(){
         this.setSize(900,700);
         this.getContentPane().setBackground(Color.decode("#eeeeed"));
