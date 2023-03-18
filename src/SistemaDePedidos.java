@@ -59,23 +59,75 @@ public class SistemaDePedidos extends JFrame {//popo
 
                 JLabel titulo = new JLabel("S I S T E M A  D E  P E D I D O", JLabel.CENTER);
                 titulo.setFont(new Font("Arial", Font.BOLD, 24));
-                titulo.setPreferredSize(new Dimension(500,50));
+                titulo.setPreferredSize(new Dimension(800,50));
 
-                GridBagConstraints gbcDat = new GridBagConstraints();
-                gbcDat.gridx = 0;
-                gbcDat.gridy = 0;
-                fondoSistema.add(titulo, gbcDat);
+                GridBagConstraints gbcTitu = new GridBagConstraints();
+                gbcTitu.gridx = 0;
+                gbcTitu.gridy = 0;
+                fondoSistema.add(titulo, gbcTitu);
 
-                    JPanel datosCliente = new JPanel();
-                    datosCliente.setBackground(Color.pink);
-                    datosCliente.setLayout(new GridBagLayout());
-                    datosCliente.setPreferredSize(new Dimension(500,500));
+                    JPanel interfazPanel = new JPanel();
+                    interfazPanel.setBackground(Color.pink);
+                    interfazPanel.setLayout(new GridBagLayout());
+                    interfazPanel.setPreferredSize(new Dimension(800,500));
                     GridBagConstraints gbcSis = new GridBagConstraints();
-                    gbcSis.gridwidth = this.getWidth()/4;
-                    gbcSis.gridheight = this.getHeight()/4;
+                    gbcSis.gridwidth = 800;
+                    gbcSis.gridheight = 500;
                     gbcSis.gridx = 0;
                     gbcSis.gridy = 1;
-                    fondoSistema.add(datosCliente, gbcSis);
+                    fondoSistema.add(interfazPanel, gbcSis);
+
+                    JPanel datosClientePanel = new JPanel();
+                    datosClientePanel.setBackground(Color.orange);
+                    datosClientePanel.setLayout(new GridBagLayout());
+                    datosClientePanel.setPreferredSize(new Dimension(800,200));
+                    GridBagConstraints gbcCD = new GridBagConstraints();
+                    gbcCD.gridwidth = 800;
+                    gbcCD.gridheight = 200;
+                    gbcCD.gridx = 0;
+                    gbcCD.gridy = 0;
+                    interfazPanel.add(datosClientePanel, gbcCD);
+                    /*JLabel datosDelClienteTitulo = new JLabel("Datos del cliente");
+                        datosDelClienteTitulo.setFont(new Font("Arial", Font.BOLD, 12));
+                        datosDelClienteTitulo.setPreferredSize(new Dimension(300,50));
+                        GridBagConstraints gbcDatos = new GridBagConstraints();
+                        gbcDatos.gridx = 0;
+                        gbcDatos.gridy = 0;
+                        datosCliente.add(datosDelClienteTitulo,gbcDatos);
+                        String nombresLabels[] = {"Nombre:","Cedula:","Direccion:","Telefono:"};
+                        int x = 0; int y =1;
+                        JLabel datosClienteLabels[] = new JLabel[4];
+                        JTextField datosClienteTF[] = new JTextField[4];
+                         for (int i = 0; i<nombresLabels.length; i++){
+                            datosClienteLabels[i] = new JLabel(nombresLabels[i]);
+                            datosClienteLabels[i].setPreferredSize(new Dimension(200,50));
+                            datosClienteLabels[i].setFont(new Font("Arial", Font.BOLD, 12));
+                            datosClienteTF[i] = new JTextField(20);
+                            datosClienteTF[i].setPreferredSize(new Dimension(100,50));
+                            if (i == 2){
+                                x = 0;
+                                y++;
+                            }
+                            gbcDatos.gridx = x;
+                            gbcDatos.gridy = y;
+                            datosCliente.add(datosClienteLabels[i], gbcDatos);
+                            gbcDatos.gridx = x+1;
+                            gbcDatos.gridy = y;
+                            datosCliente.add(datosClienteTF[i], gbcDatos);
+                            x = x+2;
+                        }*/
+                    JPanel listaProductos = new JPanel();
+                    listaProductos.setBackground(Color.black);
+                    listaProductos.setLayout(new GridBagLayout());
+                    listaProductos.setPreferredSize(new Dimension(800,500));
+                    GridBagConstraints gbcLista = new GridBagConstraints();
+                    gbcLista.gridwidth = 800;
+                    gbcLista.gridheight = 250;
+                    gbcLista.gridx = 0;
+                    gbcLista.gridy = 1;
+                    interfazPanel.add(listaProductos, gbcLista);
+
+
 
 
 
