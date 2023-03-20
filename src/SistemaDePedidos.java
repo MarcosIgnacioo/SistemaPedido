@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class SistemaDePedidos extends JFrame {//popo
@@ -87,37 +88,43 @@ public class SistemaDePedidos extends JFrame {//popo
                     gbcCD.gridx = 0;
                     gbcCD.gridy = 0;
                     interfazPanel.add(datosClientePanel, gbcCD);
-                    /*JLabel datosDelClienteTitulo = new JLabel("Datos del cliente");
-                        datosDelClienteTitulo.setFont(new Font("Arial", Font.BOLD, 12));
+                    JLabel datosDelClienteTitulo = new JLabel("Datos del cliente", JLabel.LEFT);
+                        datosDelClienteTitulo.setFont(new Font("Arial", Font.BOLD, 20));
                         datosDelClienteTitulo.setPreferredSize(new Dimension(300,50));
                         GridBagConstraints gbcDatos = new GridBagConstraints();
                         gbcDatos.gridx = 0;
                         gbcDatos.gridy = 0;
-                        datosCliente.add(datosDelClienteTitulo,gbcDatos);
+                        gbcDatos.insets = new Insets(0,-180,0,0);
+                        datosClientePanel.add(datosDelClienteTitulo,gbcDatos);
                         String nombresLabels[] = {"Nombre:","Cedula:","Direccion:","Telefono:"};
-                        int x = 0; int y =1;
+                        int x = 0; int y =1; int tfSize = 10; int distIzq = 100; int distDer = 100;
                         JLabel datosClienteLabels[] = new JLabel[4];
                         JTextField datosClienteTF[] = new JTextField[4];
                          for (int i = 0; i<nombresLabels.length; i++){
                             datosClienteLabels[i] = new JLabel(nombresLabels[i]);
                             datosClienteLabels[i].setPreferredSize(new Dimension(200,50));
                             datosClienteLabels[i].setFont(new Font("Arial", Font.BOLD, 12));
-                            datosClienteTF[i] = new JTextField(20);
-                            datosClienteTF[i].setPreferredSize(new Dimension(100,50));
                             if (i == 2){
                                 x = 0;
                                 y++;
                             }
+                            tfSize = (i  == 0 || i ==2) ? 30 : 10; // ? la condicion se cumple : si la condicion no se cumple
+
+                            distIzq = (i  == 0 || i ==2) ? 50 : -50;
+                            distDer = (i  == 1 || i ==3) ? 100 : 250;
+                            datosClienteTF[i] = new JTextField(tfSize);
+                            gbcDatos.insets = new Insets(0,0,0,distDer);
                             gbcDatos.gridx = x;
                             gbcDatos.gridy = y;
-                            datosCliente.add(datosClienteLabels[i], gbcDatos);
-                            gbcDatos.gridx = x+1;
+                            datosClientePanel.add(datosClienteLabels[i], gbcDatos);
+                            gbcDatos.gridx = x;
                             gbcDatos.gridy = y;
-                            datosCliente.add(datosClienteTF[i], gbcDatos);
+                            gbcDatos.insets = new Insets(0,distIzq,0,0);
+                            datosClientePanel.add(datosClienteTF[i], gbcDatos);
                             x = x+2;
-                        }*/
+                        }
                     JPanel listaProductos = new JPanel();
-                    listaProductos.setBackground(Color.black);
+                    listaProductos.setBackground(Color.blue);
                     listaProductos.setLayout(new GridBagLayout());
                     listaProductos.setPreferredSize(new Dimension(800,500));
                     GridBagConstraints gbcLista = new GridBagConstraints();
@@ -126,10 +133,47 @@ public class SistemaDePedidos extends JFrame {//popo
                     gbcLista.gridx = 0;
                     gbcLista.gridy = 1;
                     interfazPanel.add(listaProductos, gbcLista);
+                        JLabel listaProductosTitulo = new JLabel("Lista de productos", JLabel.LEFT);
+                        listaProductosTitulo.setFont(new Font("Arial", Font.BOLD, 20));
+                        listaProductosTitulo.setPreferredSize(new Dimension(300,50));
+                        GridBagConstraints gbcProductos = new GridBagConstraints();
+                        gbcProductos.gridx = 0;
+                        gbcProductos.gridy = 0;
+                        gbcProductos.insets = new Insets(0,-350,0,0);
+                        listaProductos.add(listaProductosTitulo,gbcProductos);
+                            String[] nombresColumnas = {"Producto", "Modelo", "Cantidad", "Precio"};
+                            Object[][] datos = {
+                                    {1," ",    " ",   ""},
+                                    {2," ",     " ",      ""},
+                                    {3," ", " ", ""},
+                                    {4,"   ",     " ",      ""},
+                                    {5," ",    " ",     ""}
+                            };
+                            DefaultTableModel dtm = new DefaultTableModel(datos,nombresColumnas);
+                            JTable tabla = new JTable(dtm);
+                            JScrollPane scrollPane = new JScrollPane(tabla);
+                            scrollPane.setPreferredSize(new Dimension(300,100));
+                            GridBagConstraints gbcTabla = new GridBagConstraints();
+                            gbcTabla.gridx = 1;
+                            gbcTabla.gridy = 1;
+                            gbcTabla.insets = new Insets(150,-350,0,0);
+                            listaProductos.add(scrollPane,gbcTabla);
+                            JButton botonesLista[] = new JButton[4];
 
 
-
-
+                            String botonesImagenesListaNombres[] = {"guardar.png","salir.png","agregar.png","quitar.png"};
+                            GridBagConstraints gbcBotonesLista = new GridBagConstraints();
+                            int btnWidth = 121; int btnHeight = 41; int xBtn = 0; int yBtn = 3;
+                            for (int i = 0; i<botonesLista.length/2; i++){
+                                botonesLista[i] = new JButton();
+                                java.net.URL imgURL = getClass().getResource(botonesImagenesListaNombres[i]);
+                                botonesLista[i] = new JButton();
+                                botonesLista[i].setIcon(new ImageIcon(imgURL));
+                                gbcBotonesLista.gridx = xBtn++;
+                                gbcBotonesLista.gridy = yBtn;
+                                gbcBotonesLista.insets = new Insets(50,0,0,0);
+                                listaProductos.add(botonesLista[i], gbcBotonesLista);
+                            }
 
         this.revalidate();
         this.setVisible(true);
