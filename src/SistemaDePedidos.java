@@ -165,7 +165,6 @@ public class SistemaDePedidos extends JFrame {//popo
 
                             String botonesImagenesListaNombres[] = {"guardar.png","salir.png","agregar.png","quitar.png"};
                             GridBagConstraints gbcBotonesLista = new GridBagConstraints();
-                            int btnWidth = 121; int btnHeight = 41; int xBtn = 0; int yBtn = 3;
                             java.net.URL imgURL = getClass().getResource(botonesImagenesListaNombres[0]);
 
                             JButton guardar = new JButton();
@@ -194,7 +193,6 @@ public class SistemaDePedidos extends JFrame {//popo
                             gbcBotonesLista.gridy = 1;
                             gbcBotonesLista.insets = new Insets(0,0,-195,-200);
                             listaProductosPanel.add(agregar,gbcBotonesLista);
-                            JButton botonesLista[] = new JButton[4];
 
                             JButton eliminar = new JButton();
                             imgURL = getClass().getResource(botonesImagenesListaNombres[3]);
